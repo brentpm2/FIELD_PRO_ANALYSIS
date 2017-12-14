@@ -1,5 +1,10 @@
+
+#average all numeric values
 combine<-function(datafile,trt,p_crit = 0.05){
-  #does the datafile have the necessary columns?
+  #does the datafile have the necessary components?
+  if(is.null(datafile$'EVALUATION MEAN')) {
+    stop("Improper datafile, requires EVALUATION MEAN entry in provided list")
+  }
   
   #is trt present within datafile
   
@@ -24,18 +29,20 @@ combine<-function(datafile,trt,p_crit = 0.05){
   #if data can be combined, output the combined values under a common trial name
   
   if(can_combine) {
+    #make a unique name to prevent overlap with existing trials
     
+    #add new name to list of trials
+    index[[length(index)+1]]<-as.numeric(Sys.time())
+    is_duplicated <- duplicated(index)
+    #is the newly added trial name unique?
+    if(is_duplicated[length(index)]) {
+      #when passed a list of two entries which are the same, make.unique will modify the second one.
+      #this code will execute if the new name is a duplicate, and will be replaced with a unique name.
+      index[[length(index)]] <- make.unique(rep(index[[length(index)+1]],2))[2]
+    }
+    fulltrials$trialnum <- rep(index[[length(index)]],nrow(fulltrials))
+    return(fulltrials)
   } else {
     return(can_combine)
   }
 }
-
-
-
-x<-combine(mysheets,28)
-library(reshape2)
-
-y<-aov(DATA~summarytrt + trialnum, data=x)
-z<-summary(y)[[1]][["Pr(>F)"]]
-z[2]
-summary(y)
