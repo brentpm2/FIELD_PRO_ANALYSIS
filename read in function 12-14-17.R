@@ -1,10 +1,10 @@
-library(readxl)   
-readallsheets <- function(filename,new_csv_name= "Evaluationmean.csv") {
-  #this function will read in the designated xls file and will convert three sheets into a list of dataframes
+ #this function will read in the designated xls file and will convert three sheets into a list of dataframes
   #The first and third data frame will have only a subset of the columns
   #The third sheet (EVALUATION MEAN)will be outputted as a user generated named file.
   #If no name is selected the file will be called Evaluationmean.csv
-  
+
+readallsheets <- function(filename,new_csv_name= "Evaluationmean.csv") {
+ 
   #Will give an error if the file is not located in the local directory
   if(!file.exists(filename)){
     stop("File does not exist in the local directory")
