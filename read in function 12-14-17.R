@@ -44,7 +44,7 @@ readallsheets <- function(filename,new_csv_name= "Evaluationmean.csv") {
 
   #assigns the names from the excel file to the data
   names(data_in_list) <- sheets
-  #Outputs the evaluation mean dataframe to a csv file of the users choice
+  #Outputs the evaluation mean dataframe to a csv file of inputted name
   write.csv(data_in_list$"EVALUATION MEAN",  new_csv_name)
  
 
