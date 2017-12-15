@@ -3,6 +3,6 @@
 ^.gitattributes$
 ^.gitignore$
 ^README.md$
-^SNPfreq.rproj$
+^FIELD_PRO_ANALYSIS.rproj$
 ^.Rhistory$
 ^.RData$

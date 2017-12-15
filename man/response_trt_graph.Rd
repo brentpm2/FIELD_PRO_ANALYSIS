@@ -1,16 +1,16 @@
-\name{weather_response_graph}
-\alias{weather_response_graph}
-%- Also NEED an '\alias' for EACH other topic documented here.
+\name{response_trt_graph}
+\alias{response_trt_graph}
+
 \title{
-Weather_response_graph
-%%  ~~function to do ... ~~
+Response by Treatment Graphs
+
 }
 \description{
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
-Read in an xls file outputted by MTA for FieldPro and give a graph of a chosen type based off of a selected treatment name.
+Read in an xls file outputted by MTA for FieldPro and give a graph of response variable by treatment number.  The type of graph returned can be selected by the user.
 }
 \usage{
-weather_response_graph(filename, trialname, graphtype = "p", sheetnumber = 3, ...)
+response_trt_graph(filename, trialname, graphtype = "p", sheetnumber = 3, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

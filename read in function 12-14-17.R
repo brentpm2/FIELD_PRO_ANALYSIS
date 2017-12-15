@@ -14,7 +14,8 @@ readallsheets <- function(filename,new_csv_name= "Evaluationmean.csv") {
   #Puts the data from the sheets into the list as individual data frames
   data_in_list <-    sapply(sheets, function(X) as.data.frame(read_excel(filename, sheet = X)))
   #Will give an error message if the data is too large or negative
-  if(max(data_in_list$"EVALUATION MEAN"$DATA, na.rm = TRUE) > 1000 || min(data_in_list$"EVALUATION MEAN"$DATA, na.rm = TRUE) < 0){
+  if(max(data_in_list$"EVALUATION MEAN"$DATA, na.rm = TRUE) > 1000 || 
+     min(data_in_list$"EVALUATION MEAN"$DATA, na.rm = TRUE) < 0){
     stop("Unreasonable response variable data found.")
   }
   #Will give an error message if any of the rainfall data is less than zero
@@ -31,8 +32,10 @@ readallsheets <- function(filename,new_csv_name= "Evaluationmean.csv") {
   if(min(data_in_list$"EVALUATION MEAN"$"SUMMARY TRT#", na.rm=TRUE) < 0){
     stop("Cannot have a negative treatment number")
   }
-  #Will give a warning message if the rate values are too high, but will still finish the rest of the function
-  if(max(data_in_list$"TREATMENT"$RATE, na.rm = TRUE) > 100 || min(data_in_list$"TREATMENT"$RATE, na.rm = TRUE) < 0){
+  #Will give a warning message if the rate values are too high, 
+  #but will still finish the rest of the function
+  if(max(data_in_list$"TREATMENT"$RATE, na.rm = TRUE) > 100 || 
+     min(data_in_list$"TREATMENT"$RATE, na.rm = TRUE) < 0){
     warning("Abnormal rate values detected.")
   }
 

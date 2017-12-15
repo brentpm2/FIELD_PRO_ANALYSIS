@@ -1,11 +1,11 @@
-  #function will read in a xls file that was outputted by MTA for Field Pro and a specific trial name from that data set
-  #the user has the option to choose what kind of plot is made
+  #Function will read in a xls file that was outputted by MTA for Field Pro and a specific trial name from that data set
+  #The user has the option to choose what kind of plot is made
   #If no plot type is selected, a basic scatterplot will be created
   #If no plot type is selected or "p" is selected a regression line will also be output
   #Will output a histogram of the response variable if the graphtype is selected
-  #y variable will be yield data in Kg/hectare and y variable will be trial treatment number
-  #the plot title will be named after the trial name that was given by the user
-weather_response_graph <- function(filename,trialname,graphtype="p",sheetnumber=3,...){
+  #Y variable will be yield data in Kg/hectare and y variable will be trial treatment number
+  #The plot title will be named after the trial name that was given by the user
+response_trt_graph <- function(filename,trialname,graphtype="p",sheetnumber=3,...){
   
   #Reads in the selected sheet number 
   graphfile<-read_xls(filename, sheet = sheetnumber)
@@ -36,10 +36,12 @@ weather_response_graph <- function(filename,trialname,graphtype="p",sheetnumber=
   #creates a plot of the selected type without a regression line when graphtype does not equal "p"
   if(graphtype=="p"){
     #plots the x variable by the y variable and adds labels to both x and y axis as well as the plot label
-    plot(xvar,yvar,xlab="Trial treatment number",ylab="Yield kg/hectare",main=trialname,type=graphtype,... )
+    plot(xvar,yvar,xlab="Trial treatment number",ylab="Yield kg/hectare",
+         main=trialname,type=graphtype,... )
     #adds a fitline for the data
     abline(fit<-lm(yvar~xvar))
-    legend("topright", bty="n", legend=paste("Adjusted R^2", format(summary(fit)$adj.r.squared, digits=4)))
+    legend("topright", bty="n", legend=paste
+           ("Adjusted R^2", format(summary(fit)$adj.r.squared, digits=4)))
   }else{
     if(graphtype=="h"){
       hist(yvar, xlab = "Yield kg/hectare",...)
