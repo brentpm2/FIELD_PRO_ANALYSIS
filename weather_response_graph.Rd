@@ -2,36 +2,40 @@
 \alias{weather_response_graph}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
+Weather_response_graph
 %%  ~~function to do ... ~~
 }
 \description{
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Read in an xls file outputted by MTA for FieldPro and give a graph of a chosen type based off of a selected treatment name.
 }
 \usage{
-weather_response_graph(filename, trialname, x, y, graphtype = "p", sheetnumber = 3, ...)
+weather_response_graph(filename, trialname, graphtype = "p", sheetnumber = 3, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{filename}{
-%%     ~~Describe \code{filename} here~~
+The XLS file from MTA that will be read in.
 }
   \item{trialname}{
-%%     ~~Describe \code{trialname} here~~
-}
-  \item{x}{
-%%     ~~Describe \code{x} here~~
-}
-  \item{y}{
-%%     ~~Describe \code{y} here~~
+The name of the trial that the graph will be made from
 }
   \item{graphtype}{
-%%     ~~Describe \code{graphtype} here~~
+The type of plot that will be drawn:
+    "p" for a scatterplot with an R squared value,
+    "l" for a plot with just lines,
+    "b" for both lines and points,
+    "c" for lines with blank spaces where the points would be,
+    "o" for lines going through the points,
+    "h" for a histogram of the response variable,
+    "s" for a step plot,
+    "n" for no plot.
 }
   \item{sheetnumber}{
-%%     ~~Describe \code{sheetnumber} here~~
+The sheet number for the EVALUATION MEANS data.  The standard output from MTA is the third sheet.
 }
   \item{\dots}{
-%%     ~~Describe \code{\dots} here~~
+Arguments to be passed to methods, such as colors or size.  
 }
 }
 \details{
@@ -40,6 +44,7 @@ weather_response_graph(filename, trialname, x, y, graphtype = "p", sheetnumber =
 \value{
 %%  ~Describe the value returned
 %%  If it is a LIST, use
+A graph of the selected type given by the user.  If no plot type is selected, a scatterplot will be returned.
 %%  \item{comp1 }{Description of 'comp1'}
 %%  \item{comp2 }{Description of 'comp2'}
 %% ...
@@ -48,7 +53,7 @@ weather_response_graph(filename, trialname, x, y, graphtype = "p", sheetnumber =
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+Brent Murphy and Christopher Landau
 }
 \note{
 %%  ~~further notes~~
