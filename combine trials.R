@@ -1,15 +1,27 @@
 
 #average all numeric values
-combine<-function(datafile,trt,p_crit = 0.05){
+combine<-function(datafile,trt,p_crit = 0.05) {
   #does the datafile have the necessary components?
+  if(is.atomic(datafile)) {
+    stop("Improper datafile, expected a list")
+  }
   if(is.null(datafile$'EVALUATION MEAN')) {
     stop("Improper datafile, requires EVALUATION MEAN entry in provided list")
   }
-  
+  if(is.null(datafile$`EVALUATION MEAN`$`SUMMARY TRT#`)) {
+    stop("Improper datafile, requires 'SUMMARY TRT# within EVALUATION MEAN in provided list")
+  }
+  if(is.null(datafile$`EVALUATION MEAN`$`TRIAL #`)) {
+    stop("Improper datafile, requires 'TRIAL #' within EVaLUATION MEAN in provided list")
+  }
   #is trt present within datafile
-  
+  if(length(datafile$`EVALUATION MEAN`$`SUMMARY TRT#`==trt)<=1) {
+    stop("Improper common treatment, present only in one or fewer entries in datafile")
+  }
   #is the supplied p-value valid? 1>p_crit>0
-  
+  if(p_crit>1 || p_crit<0) {
+    stop("Improper p_critical value. P value must be between 0 and 1.")
+  }
   
   #create a subset of inputted datafile delimited by inputted treatment number 
   datafilesubset<-datafile$`EVALUATION MEAN`[datafile$`EVALUATION MEAN`$`SUMMARY TRT#`==trt,]
