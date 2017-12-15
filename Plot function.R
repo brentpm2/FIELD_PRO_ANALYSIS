@@ -1,5 +1,3 @@
-library(readxl)   
-weather_response_graph <- function(filename,trialname,graphtype="p",sheetnumber=3,...){
   #function will read in a xls file that was outputted by MTA for Field Pro and a specific trial name from that data set
   #the user has the option to choose what kind of plot is made
   #If no plot type is selected, a basic scatterplot will be created
@@ -7,6 +5,7 @@ weather_response_graph <- function(filename,trialname,graphtype="p",sheetnumber=
   #Will output a histogram of the response variable if the graphtype is selected
   #y variable will be yield data in Kg/hectare and y variable will be trial treatment number
   #the plot title will be named after the trial name that was given by the user
+weather_response_graph <- function(filename,trialname,graphtype="p",sheetnumber=3,...){
   
   #Reads in the selected sheet number 
   graphfile<-read_xls(filename, sheet = sheetnumber)
