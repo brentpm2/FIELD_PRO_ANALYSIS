@@ -15,3 +15,4 @@ Description: This package includes functions to read in a dataset ouputted by
   standardize the data, and make a bar chart of a specified component for a user imputted trial.
 Url: https://github.com/brentpm2/FIELD_PRO_ANALYSIS
 License: GPL-3
+LazyData: true
