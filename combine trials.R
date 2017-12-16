@@ -14,6 +14,9 @@ combine<-function(datafile,trt,p_crit = 0.05) {
   if(is.null(datafile$`EVALUATION MEAN`$`TRIAL #`)) {
     stop("Improper datafile, requires 'TRIAL #' within EVaLUATION MEAN in provided list")
   }
+  if(is.null(datafile$'EVALUATION MEAN'$DATA)) {
+    stop("Improper datafile, requires 'DATA' within EVALUATION MEAN in the provided list")
+  }
   #is trt present within datafile
   if(length(datafile$`EVALUATION MEAN`$`SUMMARY TRT#`==trt)<=1) {
     stop("Improper common treatment, present only in one or fewer entries in datafile")
