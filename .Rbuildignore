@@ -6,3 +6,5 @@
 ^FIELD_PRO_ANALYSIS.rproj$
 ^.Rhistory$
 ^.RData$
+^.*\.Rproj$
+^\.Rproj\.user$

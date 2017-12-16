@@ -1,5 +1,3 @@
-install.packages("stringr")
-library(stringr)
 #constructs a bar chart of yield output all treatments containing a specific component
 #works within a specified trial, by default the first trial listed in the dataset will be used
 plot_by_component <- function(datafile,treatment_list,component,trial = "",resp_var = "DATA") {
@@ -22,8 +20,14 @@ plot_by_component <- function(datafile,treatment_list,component,trial = "",resp_
   if(is.null(treatment_list$"SUMMARY TRT #")) {
     stop("Improper treatmetn_list: expected column labeled 'SUMMARY TRT#'")
   }
+  if(is.null(datafile$"TRIAL #")) {
+    stop("Improper datafile: expected column labeled 'TRIAL #")
+  }
   if(is.null(datafile$"SUMMARY TRT#")) {
-    stop("improper datafile: expected column labeled 'SUMMARY TRT#")
+    stop("Improper datafile: expected column labeled 'SUMMARY TRT#")
+  }
+  if(!is.numeric(datafile[,resp_var])) {
+    stop("Improper datafile: expected the specified resp_var column of datafile to be numeric")
   }
   #get a list of treatments containing a component
   valid_treatments <- treatment_list[treatment_list$"TREATMENT COMPONENT"==component,"SUMMARY TRT #"]
@@ -46,22 +50,14 @@ plot_by_component <- function(datafile,treatment_list,component,trial = "",resp_
   output_heights <-datafile_subset[,resp_var]
   pdf_title <-paste("Effect of Treatment containing '",component,"' on Yield", sep = "")
   pdf(paste(pdf_title,".pdf",sep = ""))
+  #export graph as pdf
   barplot(height = output_heights,names.arg = datafile_subset$'SUMMARY TRT#',
           xlab = "SUMMARY TRT#", ylab = resp_var,
           main = pdf_title)
   dev.off()
   write.table(datafile_subset,file = paste(pdf_title,".txt",sep = ""))
-  #export graph as pdf
+  
   return(datafile_subset)
-  #export component list of all treatments used in graph to same pdf
 }
 
-trtlist <- data.frame("SUMMARY TRT #" = c("1-A","1-B","2-A","2-B","3-A"),
-                      "TREATMENT COMPONENT" = c("a","b","a","c","b"))
-names(trtlist)<-c("SUMMARY TRT #","TREATMENT COMPONENT")
-datafile <- data.frame("DATA" = c(10,9,8,7,6,5,4),
-                       "SUMMMARY TRT#" = c(1,2,3,4,5,1,1),
-                       "TRIAL #" = c(1,1,1,1,1,1,2))
-names(datafile)<-c("DATA","SUMMARY TRT#","TRIAL #")
-plot_by_component(datafile = datafile,treatment_list = trtlist,
-                  component = "a",resp_var = "DATA")
+

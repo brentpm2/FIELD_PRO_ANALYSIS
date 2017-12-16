@@ -7,7 +7,8 @@ Authors@R: c(person("Brent", "Murphy", role = c("aut", "cre"),
                   role =c("aut", "cre"),email ="clandau2@illinois.edu"))
 Author: Brent Murphy [aut, cre], Christopher Landau [aut, cre]
 Maintainer: Christopher Landau <clandau2@illinois.edu>
-depends:  readxl
+depends:  readxl,
+          stringr
 Description: This package includes functions to read in a dataset ouputted by 
   MTA for FieldPro and check for non normal data, create a graph of the users choice,
   determine whether or not two trials can be combined and if so combine them,
