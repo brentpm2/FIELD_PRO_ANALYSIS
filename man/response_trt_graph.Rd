@@ -53,7 +53,7 @@ A graph of the selected type given by the user.  If no plot type is selected, a 
 %% ~put references to the literature/web site here ~
 }
 \author{
-Brent Murphy and Christopher Landau
+Christopher Landau
 }
 \note{
 %%  ~~further notes~~
@@ -65,50 +65,10 @@ Brent Murphy and Christopher Landau
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
 
-## The function is currently defined as
-function (filename, trialname, x, y, graphtype = "p", sheetnumber = 3, 
-    ...) 
-{
-    graphfile <- read_xls(filename, sheet = sheetnumber)
-    if (!"TRIAL TRT#" \%in\% names(graphfile)) {
-        stop("Excel File is missing TRIAL TRT# column")
-    }
-    if (!"DATA" \%in\% names(graphfile)) {
-        stop("Excel File is missing DATA column")
-    }
-    if (!is.numeric(graphfile$"TRIAL TRT#")) {
-        stop("The trial treatment number column needs to be numeric")
-    }
-    if (!is.numeric(graphfile$DATA)) {
-        stop("The Data column needs to be numeric")
-    }
-    xvar <- graphfile$"TRIAL TRT#"[graphfile$"TRIAL #" == trialname]
-    yvar <- graphfile$DATA[graphfile$"TRIAL #" == trialname]
-    if (graphtype == "p") {
-        plot(xvar, yvar, xlab = "Trial treatment number", ylab = "Yield kg/hectare", 
-            main = trialname, type = graphtype, ...)
-        abline(fit <- lm(yvar ~ xvar))
-        legend("topright", bty = "n", legend = paste("Adjusted R^2", 
-            format(summary(fit)$adj.r.squared, digits = 4)))
-    }
-    else {
-        if (graphtype == "h") {
-            hist(yvar, xlab = "Yield kg/hectare", ...)
-        }
-        else {
-            plot(xvar, yvar, xlab = "Trial treatment number", 
-                ylab = "Yield kg/hectare", main = trialname, 
-                type = graphtype, ...)
-        }
-    }
-    graphfile
-  }
-}
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+require(readxl)  ## for read_excel
+## Scatterplot of response variable by treatments
+response_trt_graph("YIELDALL_MTA_FLATFILE.xls","US 101/10/01 002 01")
+
+## Histogram of the response variables
+response_trt_graph("YIELDALL_MTA_FLATFILE.xls","US 101/10/01 002 01", graphtype = h)
