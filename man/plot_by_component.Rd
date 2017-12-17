@@ -63,6 +63,11 @@ Brent Murphy
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
+trtlist <- data.frame("SUMMARY TRT #" = c("1-A","1-B","2-A","2-B","3-A"),"TREATMENT COMPONENT" = c("a","b","a","c","b"))
+names(trtlist)<-c("SUMMARY TRT #","TREATMENT COMPONENT")
+datafile <- data.frame("DATA" = c(10,9,8,7,6,5,4),"SUMMMARY TRT#" = c(1,2,3,4,5,1,1),"TRIAL #" = c(1,1,1,1,1,1,2))
+names(datafile)<-c("DATA","SUMMARY TRT#","TRIAL #")
+plot_by_component(datafile = datafile,treatment_list = trtlist,component = "a",resp_var = "DATA")
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
