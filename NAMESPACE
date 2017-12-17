@@ -1,1 +1,7 @@
 export(readallsheets,response_trt_graph,combine,output_standardized,plot_by_component)
+  importFrom("grDevices", "dev.off", "pdf")
+  importFrom("graphics", "abline", "barplot", "hist", "legend", "plot")
+  importFrom("stats", "aggregate", "aov", "lm", "sd")
+  importFrom("utils", "write.csv", "write.table")
+  importFrom("readxl", "read_excel", "read_xls", "excel_sheets")
+  importFrom("stringr", "str_extract")

@@ -1,4 +1,4 @@
-Package: field_pro_analysis
+Package: fieldproanalysis
 Version: 1.0
 Date: 2017-12-16
 Title: FieldPro Output Data Management and Analysis
@@ -7,12 +7,11 @@ Authors@R: c(person("Brent", "Murphy", role = c("aut", "cre"),
                   role =c("aut", "cre"),email ="clandau2@illinois.edu"))
 Author: Brent Murphy [aut, cre], Christopher Landau [aut, cre]
 Maintainer: Christopher Landau <clandau2@illinois.edu>
-depends:  readxl,
-          stringr
+Depends: readxl, stringr
+LazyData: true
 Description: This package includes functions to read in a dataset ouputted by 
   MTA for FieldPro and check for non normal data, create a graph of the users choice,
   determine whether or not two trials can be combined and if so combine them,
   standardize the data, and make a bar chart of a specified component for a user imputted trial.
 Url: https://github.com/brentpm2/FIELD_PRO_ANALYSIS
 License: GPL-3
-LazyData: true

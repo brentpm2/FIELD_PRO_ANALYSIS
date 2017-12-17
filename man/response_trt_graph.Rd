@@ -72,3 +72,4 @@ response_trt_graph("YIELDALL_MTA_FLATFILE.xls","US 101/10/01 002 01")
 
 ## Histogram of the response variables
 response_trt_graph("YIELDALL_MTA_FLATFILE.xls","US 101/10/01 002 01", graphtype = h)
+}
