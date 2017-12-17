@@ -68,8 +68,9 @@ Christopher Landau
 
 require(readxl)  ## for read_excel
 ## Scatterplot of response variable by treatments
-response_trt_graph("YIELDALL_MTA_FLATFILE.xls","US 101/10/01 002 01")
+path1<-system.file("extdata", "YIELDALL_MTA_FLATFILE.xls", package = "fieldproanalysis")
+response_trt_graph(path1,"US 101/10/01 002 01")
 
 ## Histogram of the response variables
-response_trt_graph("YIELDALL_MTA_FLATFILE.xls","US 101/10/01 002 01", graphtype = h)
+response_trt_graph(path1,"US 101/10/01 002 01", graphtype = "h")
 }

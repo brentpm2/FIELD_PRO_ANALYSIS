@@ -62,8 +62,8 @@ Christopher Landau
 }
 \examples{
 require(readxl) ##for read_excel, excel_sheets
-system.file("extdata", "YIELDALL_MTA_FLATFILE.xls", package = "FIELDPROANALYSIS")
-mysheets<-readallsheets("YIELDALL_MTA_FLATFILE.xls","example.csv")
+path1<-system.file("extdata", "YIELDALL_MTA_FLATFILE.xls", package = "fieldproanalysis")
+mysheets<-readallsheets(path1,"example.csv")
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 }
