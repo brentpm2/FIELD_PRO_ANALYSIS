@@ -65,7 +65,3 @@ test1 <-data.frame(x = c(1,2,3,4,5),y = c(2,4,6,8,10),z = c(15,20,30,40,50))
 colnames(test1)<-c("ONE","TWO","THREE")
 output_standardized(datafile = test1, col_names = c("ONE","TWO","THREE"), filename = "testfiles")
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

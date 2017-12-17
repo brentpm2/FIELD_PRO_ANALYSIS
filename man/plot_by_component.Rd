@@ -69,7 +69,3 @@ datafile <- data.frame("DATA" = c(10,9,8,7,6,5,4),"SUMMMARY TRT#" = c(1,2,3,4,5,
 names(datafile)<-c("DATA","SUMMARY TRT#","TRIAL #")
 plot_by_component(datafile = datafile,treatment_list = trtlist,component = "a",resp_var = "DATA")
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
