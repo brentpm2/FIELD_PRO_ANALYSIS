@@ -30,32 +30,34 @@ plot_by_component <- function(datafile,treatment_list,component,trial = "",resp_
     stop("Improper datafile: expected the specified resp_var column of datafile to be numeric")
   }
   #get a list of treatments containing a component
-  valid_treatments <- treatment_list[treatment_list$"TREATMENT COMPONENT"==component,"SUMMARY TRT #"]
-  if(length(valid_treatments)<1) {
+  valid_treatments <- treatment_list[treatment_list$"TREATMENT COMPONENT" == component,"SUMMARY TRT #"]
+  if(length(valid_treatments) < 1) {
     stop("Improper component: component not present within treatment_list")
   }
   #ensure only one trial is present within datafile
-  if(trial=="") {
-    datafile <- datafile[datafile$`TRIAL #`==datafile$`TRIAL #`[1],]
+  if(trial == "") {
+    datafile <- datafile[datafile$`TRIAL #` == datafile$`TRIAL #`[1],]
   } else {
-    datafile <- datafile[datafile$`TRIAL #`==trial,]
+    datafile <- datafile[datafile$`TRIAL #` == trial,]
   }
   #extract digits from non-treatments, allowing comparison to datafile
-  valid_treatments <- str_extract(valid_treatments,"^[[:digit:]]+")
+  valid_treatments <- str_extract(valid_treatments, "^[[:digit:]]+")
   #subset datafile by the list of treatments
   datafile_subset <- datafile[datafile$`SUMMARY TRT#` %in% valid_treatments,]
   #aggregate all instances of the same treatment
-  datafile_subset <- aggregate(x = datafile_subset,by = list(datafile_subset$"SUMMARY TRT#"),mean)
+  datafile_subset <- aggregate(x = datafile_subset, by = list(datafile_subset$"SUMMARY TRT#"), mean)
   #graph the subset by the specified variable
   output_heights <-datafile_subset[,resp_var]
-  pdf_title <-paste("Effect of Treatment containing '",component,"' on Yield", sep = "")
-  pdf(paste(pdf_title,".pdf",sep = ""))
+  pdf_title <-paste("Effect of Treatment containing '", component, "' on Yield", sep = "")
+  pdf(paste(pdf_title, ".pdf", sep = ""))
   #export graph as pdf
-  barplot(height = output_heights,names.arg = datafile_subset$'SUMMARY TRT#',
-          xlab = "SUMMARY TRT#", ylab = resp_var,
+  barplot(height = output_heights, 
+          names.arg = datafile_subset$'SUMMARY TRT#',
+          xlab = "SUMMARY TRT#", 
+          ylab = resp_var,
           main = pdf_title)
   dev.off()
-  write.table(datafile_subset,file = paste(pdf_title,".txt",sep = ""))
+  write.table(datafile_subset, file = paste(pdf_title,".txt", sep = ""))
   
   return(datafile_subset)
 }

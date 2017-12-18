@@ -7,7 +7,7 @@ Plot by Treatment component
 }
 \description{
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
-Constructs a bar chart of a provided response variable for all treatments containing a specified component within a trial.
+Constructs a bar chart of a provided response variable for all treatments containing a specified component within a trial. Exports graph to pdf only. Exports data used to generate graph to tab separated file.
 }
 \usage{
 plot_by_component(datafile, treatment_list, component, trial = "", resp_var = "DATA")
@@ -49,11 +49,11 @@ Brent Murphy
 \examples{
 trtlist <- data.frame("SUMMARY TRT #" = c("1-A","1-B","2-A","2-B","3-A"),
 "TREATMENT COMPONENT" = c("a","b","a","c","b"))
-names(trtlist)<-c("SUMMARY TRT #","TREATMENT COMPONENT")
+names(trtlist) <- c("SUMMARY TRT #","TREATMENT COMPONENT")
 datafile <- data.frame("DATA" = c(10,9,8,7,6,5,4),
                        "SUMMMARY TRT#" = c(1,2,3,4,5,1,1),
                        "TRIAL #" = c(1,1,1,1,1,1,2))
-names(datafile)<-c("DATA","SUMMARY TRT#","TRIAL #")
+names(datafile) <- c("DATA","SUMMARY TRT#","TRIAL #")
 plot_by_component(datafile = datafile,
                   treatment_list = trtlist,
                   component = "a",
