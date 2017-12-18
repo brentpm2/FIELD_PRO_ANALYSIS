@@ -16,11 +16,11 @@ plot_by_component(datafile, treatment_list, component, trial = "", resp_var = "D
 \arguments{
   \item{datafile}{
 %%     ~~Describe \code{datafile} here~~
-A dataframe containing the column specified as resp_var and 'SUMMARY TRT#', and 'TRIAL #'. 
+A dataframe containing the column specified as resp_var and 'SUMMARY TRT#', and 'TRIAL #'. This dataframe is contained within the output of the 'readallsheets' function.
 }
   \item{treatment_list}{
 %%     ~~Describe \code{treatment_list} here~~
-A dataframe containing the columns 'TREATMENT COMPONENT', one of which corresponding to component, and 'SUMMARY TRT #'
+A dataframe containing the columns 'TREATMENT COMPONENT', one of which corresponding to component, and 'SUMMARY TRT #'. This dataframe is contained within the output of 'readallsheets' function.
 }
   \item{component}{
 %%     ~~Describe \code{component} here~~
@@ -34,10 +34,6 @@ A character string corresponding to an entry within the 'TRIAL #' column of data
 %%     ~~Describe \code{resp_var} here~~
 A character string corresponding to the column header present within dataframe, which contains numeric data.
 }
-}
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
 \value{
 %%  ~Describe the value returned
 %%  If it is a LIST, use
@@ -46,26 +42,20 @@ A character string corresponding to the column header present within dataframe, 
 %% ...
 returns an aggregated datafile subsetted to treatments which contain the specified component, aggregating multiple instances of a given treatment.
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
 \author{
 %%  ~~who you are~~
 Brent Murphy
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-}
 \examples{
-trtlist <- data.frame("SUMMARY TRT #" = c("1-A","1-B","2-A","2-B","3-A"),"TREATMENT COMPONENT" = c("a","b","a","c","b"))
+trtlist <- data.frame("SUMMARY TRT #" = c("1-A","1-B","2-A","2-B","3-A"),
+"TREATMENT COMPONENT" = c("a","b","a","c","b"))
 names(trtlist)<-c("SUMMARY TRT #","TREATMENT COMPONENT")
-datafile <- data.frame("DATA" = c(10,9,8,7,6,5,4),"SUMMMARY TRT#" = c(1,2,3,4,5,1,1),"TRIAL #" = c(1,1,1,1,1,1,2))
+datafile <- data.frame("DATA" = c(10,9,8,7,6,5,4),
+                       "SUMMMARY TRT#" = c(1,2,3,4,5,1,1),
+                       "TRIAL #" = c(1,1,1,1,1,1,2))
 names(datafile)<-c("DATA","SUMMARY TRT#","TRIAL #")
-plot_by_component(datafile = datafile,treatment_list = trtlist,component = "a",resp_var = "DATA")
+plot_by_component(datafile = datafile,
+                  treatment_list = trtlist,
+                  component = "a",
+                  resp_var = "DATA")
 }
