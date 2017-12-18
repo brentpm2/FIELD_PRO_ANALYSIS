@@ -51,7 +51,6 @@ response_trt_graph <- function(filename,trialname,graphtype="p",sheetnumber=3,..
     }
     
   }
-graphfile
 }
 
 
