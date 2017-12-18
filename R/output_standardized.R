@@ -27,18 +27,33 @@ output_standardized <- function(datafile,col_names,filename, should_append = FAL
   if(!is.character(filename)) {
     stop("Improper filename: expected character")
   }
+  
   #get mean of each column, put into list
   means <- colMeans(datafile_subset)
   #get st.dev of each column, put into list
   variance <- apply(datafile_subset, 2, sd)
   #subtract mean from each entry of the corresponding column, divide by st.dev
-  datafile_subset <- apply(datafile_subset, 1, function(x) (x - means) / variance)
+  datafile_subset <- apply(datafile_subset, 
+                           1, 
+                           function(x) (x - means) / variance)
   #export as tab separated table
-  write.table(datafile_subset, file = filename, append = should_append, sep = "\t", row.names = FALSE, col.names = FALSE)
+  
+  write.table(datafile_subset, 
+              file = filename, 
+              append = should_append, 
+              sep = "\t", 
+              row.names = FALSE, 
+              col.names = FALSE)
+  
   #export mean and st.dev lists into tab separated file.
   coeffic <- data.frame(means, variance)
   coeffic_file <- paste(filename, "coefficients")
-  write.table(coeffic, file = coeffic_file, append = should_append, sep = "\t", row.names = FALSE, col.names = FALSE)
+  write.table(coeffic, 
+              file = coeffic_file, 
+              append = should_append, 
+              sep = "\t", 
+              row.names = FALSE, 
+              col.names = FALSE)
   #return standardized datafile
   return(datafile_subset)
 }
