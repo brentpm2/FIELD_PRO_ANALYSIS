@@ -1,5 +1,5 @@
 Package: fieldproanalysis
-Version: 1.0
+Version: 1.1
 Date: 2017-12-16
 Title: FieldPro Output Data Management and Analysis
 Authors@R: c(person("Brent", "Murphy", role = c("aut"),

@@ -1,18 +1,19 @@
 \name{response_trt_graph}
+
 \alias{response_trt_graph}
 
 \title{
 Response by Treatment Graphs
-
 }
+
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
 Read in an xls file outputted by MTA for FieldPro and give a graph of response variable by treatment number.  The type of graph returned can be selected by the user.
 }
+
 \usage{
 response_trt_graph(filename, trialname, graphtype = "p", sheetnumber = 3, ...)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{filename}{
 The XLS file from MTA that will be read in.
@@ -35,38 +36,19 @@ The type of plot that will be drawn:
 The sheet number for the EVALUATION MEANS data.  The standard output from MTA is the third sheet.
 }
   \item{\dots}{
-Arguments to be passed to methods, such as colors or size.  
+Arguments to be passed to methods in plot or hist functions, such as colors or size.  
 }
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
+
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-A graph of the selected type given by the user.  If no plot type is selected, a scatterplot will be returned.
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+A graph of the selected type given by the user is displayed, but no value is returned.  If no plot type is selected, a scatterplot will be returned.
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
+
 \author{
 Christopher Landau
 }
-\note{
-%%  ~~further notes~~
-}
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-}
 \examples{
-
-require(readxl)  ## for read_excel
 ## Scatterplot of response variable by treatments
 path1<-system.file("extdata", "YIELDALL_MTA_FLATFILE.xls", package = "fieldproanalysis")
 response_trt_graph(path1,"US 101/10/01 002 01")
