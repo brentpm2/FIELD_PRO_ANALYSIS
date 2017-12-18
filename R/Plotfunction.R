@@ -14,6 +14,7 @@ response_trt_graph <- function(filename,trialname,graphtype="p",sheetnumber=3,..
   if(!"TRIAL TRT#" %in% names(graphfile)){
     stop("Excel File is missing TRIAL TRT# column")
   }
+  
   #Will check to see if DATA is in the file given and if it is not will give an error
   if(!"DATA" %in% names(graphfile)){
     stop("Excel File is missing DATA column")
@@ -22,6 +23,7 @@ response_trt_graph <- function(filename,trialname,graphtype="p",sheetnumber=3,..
   if(!is.numeric(graphfile$"TRIAL TRT#")){
     stop("The trial treatment number column needs to be numeric")
   }
+  
   #If the DATA is not numeric this will stop the function
   if(!is.numeric(graphfile$"DATA")){
     stop("The Data column needs to be numeric")
@@ -49,7 +51,6 @@ response_trt_graph <- function(filename,trialname,graphtype="p",sheetnumber=3,..
       #plots the x variable by the y variable and adds labels to both x and y axis as well as the plot label
     plot(xvar,yvar,xlab="Trial treatment number",ylab="Yield kg/hectare",main=trialname,type=graphtype,... )
     }
-    
   }
 }
 
