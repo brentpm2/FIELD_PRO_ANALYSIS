@@ -2,7 +2,7 @@ Package: fieldproanalysis
 Version: 1.0
 Date: 2017-12-16
 Title: FieldPro Output Data Management and Analysis
-Authors@R: c(person("Brent", "Murphy", role = c("aut", "cre"),
+Authors@R: c(person("Brent", "Murphy", role = c("aut"),
                   email = "brentpm2@illinois.edu"), person("Christopher","Landau",
                   role =c("aut", "cre"),email ="clandau2@illinois.edu"))
 Author: Brent Murphy [aut, cre], Christopher Landau [aut, cre]
