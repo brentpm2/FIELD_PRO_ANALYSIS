@@ -34,6 +34,7 @@ A character string corresponding to an entry within the 'TRIAL #' column of data
 %%     ~~Describe \code{resp_var} here~~
 A character string corresponding to the column header present within dataframe, which contains numeric data.
 }
+}
 \value{
 %%  ~Describe the value returned
 %%  If it is a LIST, use
@@ -47,7 +48,7 @@ returns an aggregated datafile subsetted to treatments which contain the specifi
 Brent Murphy
 }
 \examples{
-trtlist <- data.frame("SUMMARY TRT #" = c("1-A","1-B","2-A","2-B","3-A"),
+trtlist <- data.frame("SUMMARY TRT #"=c("1-A","1-B","2-A","2-B","3-A"),
 "TREATMENT COMPONENT" = c("a","b","a","c","b"))
 names(trtlist) <- c("SUMMARY TRT #","TREATMENT COMPONENT")
 datafile <- data.frame("DATA" = c(10,9,8,7,6,5,4),
